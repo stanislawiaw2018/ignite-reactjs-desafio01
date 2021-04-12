@@ -20,14 +20,13 @@ module.exports = {
     hot: true,
   },
   plugins: [
-    isDevelopment && new ReactRefreshWebpackPlugin(),  
+    isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
     })
   ].filter(Boolean),
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: {
@@ -40,7 +39,7 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       },

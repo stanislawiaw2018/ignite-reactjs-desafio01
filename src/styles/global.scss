@@ -1,7 +1,10 @@
+// @import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 :root {
   --blue: #273FAD;
   --green: #3FAD27;
-  --red: 	#ad273f;
+  --red: #ad273f;
   --background: #EBEBEB;
   --shapes: #FFFFFF;
   --text-title: #3D3D4D;
@@ -20,7 +23,8 @@ body {
   color: #121214;
 }
 
-input, textarea {
+input,
+textarea {
   font-family: "Poppins";
 }
 
@@ -30,6 +34,18 @@ input, textarea {
   padding: 2.5rem 1rem;
 }
 
-button, .checkmark {
+button,
+.checkmark {
   cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: transparent !important;
+    border: 0 !important;
+    outline: none !important;
+  }
 }
