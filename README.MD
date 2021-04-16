@@ -5,7 +5,7 @@
 </h1>
 
 <h1 align="center">
-<img alt="logo LunchBase" src="images/icon.png" width="300px">
+<img style="background:black" alt="logo LunchBase" src="images/icon.png" width="300px">
 </h1>
 
 <h4 align="center"> 
@@ -17,7 +17,7 @@
 
 
 <h2 align="center">
-    <img src="/images/demonstrative.png">
+    <img alt="Demnastração da aplicação" src="images/demonstrative.png">
 </h2>
 
 
