@@ -6,7 +6,9 @@ import '../styles/tasklist.scss'
 
 import { FiTrash, FiCheckSquare } from 'react-icons/fi'
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-import ModalConfirmation from './ModalConfirmation';
+
+import Swal from 'sweetalert2';
+
 
 interface Task {
   id: number;
@@ -22,15 +24,25 @@ export function TaskList() {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  // const [open, setOpen] = useState(true);
 
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
     if (!newTaskTitle) {
       return (
-        alert("Não pode add tarefa com o titulo vazio"),
-        document.querySelector("input")?.focus()
+        <>
+
+          {Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Você não pode inserir uma tarefa em branco',
+            showConfirmButton: true,
+
+          })}
+
+          {document.getElementById("texto")?.focus}
+        </>
+
       )
     } else {
       const newTask = {
@@ -38,7 +50,6 @@ export function TaskList() {
         title: newTaskTitle,
         isComplete: false
       }
-      // console.log(newTask.id);
       setTasks(oldState => [...oldState, newTask]);
       setNewTaskTitle('');
     }
@@ -59,7 +70,6 @@ export function TaskList() {
   function captureId(id: number) {
 
 
-    console.log(`meu ID na função é: ${id}`)
     setauxTask(id)
 
     setModal(!modal) //para abrir o modal
@@ -84,8 +94,9 @@ export function TaskList() {
 
         <div className="input-group">
           <input
+            id="texto"
             type="text"
-            placeholder="Adicionar novo tarefa"
+            placeholder="Adicionar novo todo"
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
@@ -113,7 +124,7 @@ export function TaskList() {
               </div>
 
               <div>
-                <Button onClick={() => captureId(task.id)}>{<FiTrash />}</Button>
+                <Button type="button" data-testid="remove-task-button" onClick={() => captureId(task.id)}>{<FiTrash />}</Button>
                 <Modal isOpen={modal} toggle={toggle} >
                   <ModalHeader toggle={toggle}>Atenção</ModalHeader>
                   <ModalBody>
@@ -130,7 +141,6 @@ export function TaskList() {
 
             </li>
           ))}
-          {console.log(`Meu auxiliar é: ${auxtask}`)}
 
         </ul>
 
