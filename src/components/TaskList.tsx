@@ -78,27 +78,27 @@ export function TaskList() {
 
   //Função para remover a task selecionada
   function handleRemoveTask(id: number) {
-    // Swal.fire({
-    //   title: 'Realmente deseja remover essa tarefa?',
-    //   showDenyButton: true,
-    //   confirmButtonText: `Sim`,
-    //   denyButtonText: `Não`,
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     const filteredTask = tasks.filter(task => task.id !== id);
-    //     console.log(id)
-    //     setTasks(filteredTask)
-    //     Swal.fire({
-    //       title: 'Exclusão!',
-    //       text: 'Tarefa deletada com sucesso!',
-    //       icon: 'success',
-    //       showConfirmButton: false,
-    //       timer: 3000
-    //     })
-    //   }
-    // })
-    const filteredTask = tasks.filter(task => task.id !== id);
-    setTasks(filteredTask)
+    Swal.fire({
+      title: 'Realmente deseja remover essa tarefa?',
+      showDenyButton: true,
+      confirmButtonText: `Sim`,
+      denyButtonText: `Não`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const filteredTask = tasks.filter(task => task.id !== id);
+        console.log(id)
+        setTasks(filteredTask)
+        Swal.fire({
+          title: 'Exclusão!',
+          text: 'Tarefa deletada com sucesso!',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 3000
+        })
+      }
+    })
+    // const filteredTask = tasks.filter(task => task.id !== id);
+    // setTasks(filteredTask)
     // setModal(!modal) //para fechar o modal
 
   }
