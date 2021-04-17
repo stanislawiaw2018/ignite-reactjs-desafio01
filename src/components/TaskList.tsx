@@ -1,5 +1,4 @@
 
-
 import { useState } from 'react'
 
 import '../styles/tasklist.scss'
@@ -79,10 +78,28 @@ export function TaskList() {
 
   //Função para remover a task selecionada
   function handleRemoveTask(id: number) {
-    console.log(`Antes do filter ${id}`)
+    // Swal.fire({
+    //   title: 'Realmente deseja remover essa tarefa?',
+    //   showDenyButton: true,
+    //   confirmButtonText: `Sim`,
+    //   denyButtonText: `Não`,
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     const filteredTask = tasks.filter(task => task.id !== id);
+    //     console.log(id)
+    //     setTasks(filteredTask)
+    //     Swal.fire({
+    //       title: 'Exclusão!',
+    //       text: 'Tarefa deletada com sucesso!',
+    //       icon: 'success',
+    //       showConfirmButton: false,
+    //       timer: 3000
+    //     })
+    //   }
+    // })
     const filteredTask = tasks.filter(task => task.id !== id);
     setTasks(filteredTask)
-    setModal(!modal) //para fechar o modal
+    // setModal(!modal) //para fechar o modal
 
   }
 
@@ -124,7 +141,9 @@ export function TaskList() {
               </div>
 
               <div>
-                <Button type="button" data-testid="remove-task-button" onClick={() => captureId(task.id)}>{<FiTrash />}</Button>
+                {console.log(task)}
+                <Button type="button" data-testid="remove-task-button" onClick={() => handleRemoveTask(task.id)}>{<FiTrash />}</Button>
+                {/* <Button type="button" data-testid="remove-task-button" onClick={() => captureId(task.id)}>{<FiTrash />}</Button>
                 <Modal isOpen={modal} toggle={toggle} >
                   <ModalHeader toggle={toggle}>Atenção</ModalHeader>
                   <ModalBody>
@@ -132,10 +151,10 @@ export function TaskList() {
                   </ModalBody>
                   <ModalFooter>
 
-                    <Button color="primary" size="lg" onClick={() => handleRemoveTask(auxtask)}>Sim</Button>
-                    <Button color="danger" size="lg" onClick={toggle}>Não</Button>
+                    <Button type="button" color="primary" size="lg" onClick={() => handleRemoveTask(auxtask)}>Sim</Button>
+                    <Button type="button" data-testid="remove-task-button" color="danger" size="lg" onClick={toggle}>Não</Button>
                   </ModalFooter>
-                </Modal>
+                </Modal> */}
 
               </div>
 

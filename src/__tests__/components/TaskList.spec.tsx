@@ -92,7 +92,7 @@ describe('App Page', () => {
 
     fireEvent.click(addedFirstTaskRemoveButton);
 
-    // expect(addedFirstTaskTitle).not.toBeInTheDocument();
+    expect(addedFirstTaskTitle).not.toBeInTheDocument();
     expect(addedSecondTaskTitle).toBeInTheDocument();
   })
 
